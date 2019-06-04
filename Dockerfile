@@ -23,12 +23,17 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|apt-key add -          
     && apt-get update
 
 # Clang and Clang-Tools
-RUN apt-get install -y clang-7        \
-                       clang++-7      \
-                       clang-format-7 \
-                       clang-tidy-7   \
-                       llvm-7-dev     \
-                       libclang-7-dev
+RUN apt-get install -y clang-7                                 \
+                       clang++-7                               \
+                       clang-format-7                          \
+                       clang-tidy-7                            \
+                       llvm-7-dev                              \
+                       libclang-7-dev                          \
+    && ln -s /usr/bin/clang-7 /usr/bin/clang                   \
+    && ln -s /usr/bin/clang++-7 /usr/bin/clang++               \
+    && ln -s /usr/bin/clang-format-7 /usr/bin/clang-format     \
+    && ln -s /usr/bin/clang-tidy-7 /usr/bin/clang-tidy         \
+    && ln -s /usr/bin/run-clang-tidy-7 /usr/bin/run-clang-tidy
 
 # CppCheck
 RUN git clone -b 1.86 --depth 1 https://github.com/danmar/cppcheck.git           \
