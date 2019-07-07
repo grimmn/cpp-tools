@@ -31,9 +31,9 @@ RUN apt-get install -y g++-8                               \
     && ln -s /usr/bin/run-clang-tidy-8 /usr/bin/run-clang-tidy
 
 # CppCheck
-RUN git clone -b 1.86 --depth 1 https://github.com/danmar/cppcheck.git           \
+RUN git clone -b 1.88 --depth 1 https://github.com/danmar/cppcheck.git           \
     && cd cppcheck                                                               \
-    && make SRCDIR=build CFGDIR=/usr/share/cppcheck/cfg HAVE_RULES=yes           \
+    && make MATCHCOMPILER=yes CFGDIR=/usr/share/cppcheck/cfg HAVE_RULES=yes           \
             CXXFLAGS="-O2 -DNDEBUG -Wall -Wno-sign-compare -Wno-unused-function" \
     && make CFGDIR=/usr/share/cppcheck/cfg install                               \
     && cd ..                                                                     \
