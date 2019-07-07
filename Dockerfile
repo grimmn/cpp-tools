@@ -14,6 +14,7 @@ RUN apt-get update                                   \
     && python3 -m pip install --upgrade pip          \
     && python3 -m pip install --upgrade cmake_format \
     && python3 -m pip install --upgrade pyyaml       \
+    && python3 -m pip install --upgrade conan        \
     && ln -s /usr/bin/python3 /usr/bin/python
 
 # Setup for Clang
